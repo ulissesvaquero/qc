@@ -57,8 +57,8 @@ return array(
 				'linkAssets' => true,
 		),
 		'db'=>array(
-			//'connectionString' => 'mysql:host=192.168.1.101;dbname=baseextracao',
-		    'connectionString' => 'mysql:host=127.0.0.1;dbname=baseextracao',
+			'connectionString' => 'mysql:host=192.168.1.101;dbname=baseextracao',
+		    //'connectionString' => 'mysql:host=127.0.0.1;dbname=baseextracao',
 			'emulatePrepare' => true,
 			'username' => 'root',
 			'password' => '',

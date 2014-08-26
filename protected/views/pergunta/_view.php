@@ -47,9 +47,11 @@
 								array("update" => '#correcao'.$data->id ,
 									  "data" => array("idPergunta" => $data->id ,
 													  "resposta" => "js:$(\"#form".$data->id." input[type=radio]:checked \").val()")),
-								array("class" => "btn btn-success")); 
+								array("class" => "btn btn-success btn-lg")); 
 	?>
 
 
 <?php $this->endWidget(); ?>
 <div id="correcao<?php echo $data->id;?>" style="padding-top: 10px"></div>
+
+

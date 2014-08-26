@@ -122,6 +122,7 @@ class TbPanel extends TbWidget {
 		
 		$this->renderContentEnd();
 		echo CHtml::closeTag('div') . "\n";
+		
 	}
 
 	/**
