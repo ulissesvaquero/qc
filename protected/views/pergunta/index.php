@@ -115,7 +115,7 @@ echo $form->dropDownListGroup($pergunta,'id_banca',array(
 
 
 
-<div class="col-xs-2" id="myScrollspy">
+<div class="col-xs-2 hidden-xs" id="myScrollspy">
 	<ul class="nav nav-tabs nav-stacked" data-spy="affix" data-offset-top="339">
 <?php 
 	foreach($dataProvider->getData() as $key => $data)

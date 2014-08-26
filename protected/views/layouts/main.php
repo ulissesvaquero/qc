@@ -43,10 +43,6 @@
 </head>
 <body data-spy="scroll" data-target="#myScrollspy">
 <div class="container">
-	
-    
-    
-    
     <?php echo $content; ?>
 </div>
 </body>

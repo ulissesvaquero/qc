@@ -4619,3 +4619,43 @@ Stack trace:
 REQUEST_URI=/qc/index.php/pergunta/index?Pergunta%5Bid_disciplina%5D=26&Pergunta%5Bid_assunto%5D=&Pergunta%5Bid_banca%5D=&yt0=
 HTTP_REFERER=http://localhost:8080/qc/index.php/pergunta/index
 ---
+2014/08/26 21:06:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "i".' in /Users/ulissesvaquero/Documents/workspace/library/yii-1.1.15.022a51/yii-1.1.15.022a51/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Users/ulissesvaquero/Documents/workspace/library/yii-1.1.15.022a51/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('i')
+#1 /Users/ulissesvaquero/Documents/workspace/library/yii-1.1.15.022a51/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Users/ulissesvaquero/Documents/workspace/qc/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/qc/i
+---
+2014/08/26 21:06:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "p".' in /Users/ulissesvaquero/Documents/workspace/library/yii-1.1.15.022a51/yii-1.1.15.022a51/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Users/ulissesvaquero/Documents/workspace/library/yii-1.1.15.022a51/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('p')
+#1 /Users/ulissesvaquero/Documents/workspace/library/yii-1.1.15.022a51/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Users/ulissesvaquero/Documents/workspace/qc/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/qc/p
+---
+2014/08/26 21:07:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "perguntando".' in /Users/ulissesvaquero/Documents/workspace/library/yii-1.1.15.022a51/yii-1.1.15.022a51/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Users/ulissesvaquero/Documents/workspace/library/yii-1.1.15.022a51/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('perguntando')
+#1 /Users/ulissesvaquero/Documents/workspace/library/yii-1.1.15.022a51/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Users/ulissesvaquero/Documents/workspace/qc/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/qc/perguntando
+---
+2014/08/26 21:07:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "i".' in /Users/ulissesvaquero/Documents/workspace/library/yii-1.1.15.022a51/yii-1.1.15.022a51/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Users/ulissesvaquero/Documents/workspace/library/yii-1.1.15.022a51/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('i')
+#1 /Users/ulissesvaquero/Documents/workspace/library/yii-1.1.15.022a51/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Users/ulissesvaquero/Documents/workspace/qc/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/qc/i
+---
+2014/08/26 21:07:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "p".' in /Users/ulissesvaquero/Documents/workspace/library/yii-1.1.15.022a51/yii-1.1.15.022a51/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Users/ulissesvaquero/Documents/workspace/library/yii-1.1.15.022a51/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('p')
+#1 /Users/ulissesvaquero/Documents/workspace/library/yii-1.1.15.022a51/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Users/ulissesvaquero/Documents/workspace/qc/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/qc/index.php/p
+---
