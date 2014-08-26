@@ -111,21 +111,28 @@ echo $form->dropDownListGroup($pergunta,'id_banca',array(
 									array('label' => 'Applications', 'url' => '#form3'),
 				
 				)));*/
-
 ?>
 
 
 
-        <div class="col-xs-3" id="myScrollspy">
-            <ul class="nav nav-tabs nav-stacked" data-spy="affix" data-offset-top="125">
-                <li class="active"><a href="#form1">Section One</a></li>
-                <li><a href="#form2">Section Two</a></li>
-                <li><a href="#form3">Section Three</a></li>
-                <li><a href="#form4">Section Four</a></li>
-                <li><a href="#form5">Section Five</a></li>
-            </ul>
-        </div>
-
+<div class="col-xs-2" id="myScrollspy">
+	<ul class="nav nav-tabs nav-stacked" data-spy="affix" data-offset-top="339">
+<?php 
+	foreach($dataProvider->getData() as $key => $data)
+	{
+		if($key == 0)
+		{
+			echo "<li class=\"active\"><a href=\"#pergunta{$data->id}\">Pergunta {$data->id}</a></li>";
+		}else 
+		{
+			echo "<li><a href=\"#pergunta{$data->id}\">Pergunta {$data->id}</a></li>";
+		}
+	}
+?>
+	</ul>
+</div>
+                
+          
 
 
 
@@ -134,7 +141,7 @@ echo $form->dropDownListGroup($pergunta,'id_banca',array(
 	'itemView'=>'_pergunta',
 	'pager' => array('pageSize' => 5),
 	'ajaxUpdate' => false,
-	'htmlOptions' => array('class' => 'col-xs-9'),
+	'htmlOptions' => array('class' => 'col-xs-10'),
 	)); ?>
 	
 	

@@ -8,7 +8,7 @@
 
 <?php $form=$this->beginWidget('CActiveForm', array('id'=>'form'.$data->id, "action" => ""));
 ?>
-	
+	<div id="titulo<?php echo $data->id;?>">
 	<?php 
 		if($data->link_assoc)
 		{
@@ -19,7 +19,7 @@
 			echo html_entity_decode($data->titulo);
 		}
 	?>
-	
+	</div>
 	<div id="opResposta" class="well">
 	<?php
 		if($data->tipo_pergunta == 2)
