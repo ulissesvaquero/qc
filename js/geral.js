@@ -20,6 +20,8 @@ function retornoCadastrarComentario(id,retorno)
 	{
 		$('#alertComentario'+id).html(obj.cStatus);
 		$('#comentario'+id).prepend(obj.conteudo);
+		var qtdComentario = parseInt($('#pergunta'+id).find('.badge').html());
+		$('#pergunta'+id).find('.badge').html(qtdComentario+1);
 	}else
 	{
 		$('#alertComentario'+id).html(obj.cStatus);
