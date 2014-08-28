@@ -1,11 +1,21 @@
 <?php 
+	$dataProvider=new CActiveDataProvider('Comentario');
+	$dataProvider->criteria->condition = "id_pergunta=".$data->id;
+	$dataProvider->criteria->order =  "t.id DESC";
+	$qtdTotalComentario = $dataProvider->getTotalItemCount();
+	$dataProvider->pagination = false;
+	$dataProvider->criteria->limit = 5;
+
+
+
 	$div = "divFormComentario".$data->id;
 	$this->widget(
 			'booster.widgets.TbButton',
 			array(
-					'label' => 'Comentários',
+					'label' => 'Comentários <span class="badge">'.$qtdTotalComentario.'</span>',
+					'encodeLabel' => false,
 					'context' => 'primary',
-					'icon' => 'glyphicon glyphicon-comment',
+					//'icon' => 'glyphicon glyphicon-comment',
 					'htmlOptions' => array('onclick' => '$(\'#'.$div.'\').toggle()'),
 					
 			)
@@ -26,10 +36,17 @@
 ?>
 <?php $this->renderPartial('/comentario/_form',array('data' => $data));?>
 
-<div id="comentario<?php echo $data->id;?>" style="padding-top: 30px;"></div>
+<div id="alertComentario<?php echo $data->id;?>" style="padding-top: 30px;"></div>
+<div id="comentario<?php echo $data->id;?>">
+	<?php 
+		echo $this->renderPartial('/comentario/_list',array('dataProvider'=>$dataProvider),true);
+	?>
+
+
+</div>
 
 <?php 
-	echo CHtml::tag('a', array('class'=>'close pull-left','onclick'=>'$(\'#'.$div.'\').hide()'),'X',true);	
+	echo CHtml::tag('a', array('href' => '#pergunta'.$data->id ,'class'=>'close pull-left','onclick'=>'$(\'#'.$div.'\').hide()'),'X',true);	
 ?>
 </div>
 

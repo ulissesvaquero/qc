@@ -26,11 +26,11 @@ $formComentario = $this->beginWidget(
 ); ?>
 
 <?php echo $formComentario->hiddenField($data, 'id'); ?>
-
+<?php echo CHtml::hiddenField('hiddenOffset'.$data->id,'5',array('id'=>'hiddenOffset'.$data->id));?>
 <?php 
  echo CHtml::ajaxButton('Postar Comentário',
 								Yii::app()->createUrl('comentario/cadastrarcomentario'),
-								array("success" => 'js:function(retorno){$(\'#comentario'.$data->id.'\').html(retorno); $(\'#formComentario'.$data->id.'\').get(0).reset();botaoComentario($(\'#formComentario'.$data->id.'\'));}',
+								array("success" => 'js:function(retorno){retornoCadastrarComentario('.$data->id.',retorno);}',
 									  //'beforeSend' => '$(this).addClass(\'disabled\')',
 								//array("update" => '#comentario'.$id,
 									  "data" => array("idPergunta" => $data->id,'formData' => 'js:$(\'#formComentario'.$data->id.'\').serialize()')),
