@@ -1,11 +1,10 @@
+<?php 
+
+Yii::app()->session['header'] = "<h1>Questões</h1>"." <p class=\"lead\">Selecione abaixo a disciplina, assunto e até mesmo a banca de deseja</p>"
 
 
-<header class="masthead subhead" id="overview">
-    <div class="container">
-        <h1>Questões</h1>
-        <p class="lead">Selecione abaixo a disciplina, assunto e até mesmo a banca de deseja</p>
-    </div>
-</header>
+?>
+
 
 
 
@@ -116,7 +115,7 @@ echo $form->dropDownListGroup($pergunta,'id_banca',array(
 
 
 <div class="col-xs-2 hidden-xs" id="myScrollspy">
-	<ul class="nav nav-tabs nav-stacked" data-spy="affix" data-offset-top="339">
+	<ul class="nav nav-tabs nav-stacked" data-spy="affix" data-offset-top="400">
 <?php 
 	foreach($dataProvider->getData() as $key => $data)
 	{

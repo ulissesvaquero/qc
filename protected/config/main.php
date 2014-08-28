@@ -16,6 +16,10 @@ return array(
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
+		'application.modules.user.models.*',
+		'application.modules.user.components.*',
+		'application.modules.rights.*',
+		'application.modules.rights.components.*'
 	),
 
 	'modules'=>array(
@@ -27,17 +31,66 @@ return array(
 			'ipFilters'=>array('127.0.0.1','::1'),
 			'generatorPaths' => array('booster.gii'),
 		),
+		'rights' => array(
+			'superuserName'=>'Admin', // Name of the role with super user privileges. 
+            'authenticatedName'=>'Authenticated',  // Name of the authenticated user role. 
+            'userIdColumn'=>'id', // Name of the user id column in the database. 
+            'userNameColumn'=>'username',  // Name of the user name column in the database. 
+            'enableBizRule'=>true,  // Whether to enable authorization item business rules. 
+            'enableBizRuleData'=>true,   // Whether to enable data for business rules. 
+            'displayDescription'=>true,  // Whether to use item description instead of name. 
+            'flashSuccessKey'=>'RightsSuccess', // Key to use for setting success flash messages. 
+            'flashErrorKey'=>'RightsError', // Key to use for setting error flash messages. 
+ 
+            'baseUrl'=>'/rights', // Base URL for Rights. Change if module is nested. 
+            'layout'=>'rights.views.layouts.main',  // Layout to use for displaying Rights. 
+            'appLayout'=>'application.views.layouts.main', // Application layout. 
+            'cssFile'=>'rights.css', // Style sheet file to use for Rights. 
+            'install'=>false,  // Whether to enable installer. 
+            'debug'=>false,
+		),
+		'user' => array(
+			'tableUsers' => 'users',
+			'tableProfiles' => 'profiles',
+			'tableProfileFields' => 'profiles_fields',
+			'hash' => 'md5',
+			'sendActivationMail' => true,
+			'loginNotActiv' => false,
+			'activeAfterRegister' => false,
+			'user_page_size' => 10,
+			'autoLogin' => true,
+			# registration path
+			'registrationUrl' => array('/usuario/registration'),
+			# recovery password path
+			'recoveryUrl' => array('/usuario/recovery'),
+			# login form path
+			'loginUrl' => array('/user/login/teste'),
+			# page after login
+			'returnUrl' => array('/pergunta/index'),
+			# page after logout
+			'returnLogoutUrl' => array('/home/index'),
+		)
 	),
 	
 	// application components
 	'components'=>array(
 		'user'=>array(
 			// enable cookie-based authentication
-			'allowAutoLogin'=>true,
+			'class' => 'RWebUser',
+			'allowAutoLogin' => false,
+			'loginUrl' => array('/usuario/login'),
 		),
 		'booster' => array(
 				'class' => 'ext.yiibooster-401.components.Booster',
 				'responsiveCss' => true
+		),
+		'authManager' => array(
+			'class'=>'RDbAuthManager',
+            'connectionID'=>'db',
+            'itemTable'=>'authitem',
+            'itemChildTable'=>'authitemchild',
+            'assignmentTable'=>'authassignment',
+            'rightsTable'=>'rights',
 		),
 		// uncomment the following to enable URLs in path-format
 		'urlManager'=>array(
@@ -57,8 +110,8 @@ return array(
 				'linkAssets' => true,
 		),
 		'db'=>array(
-			//'connectionString' => 'mysql:host=192.168.1.101;dbname=baseextracao',
-		    'connectionString' => 'mysql:host=127.0.0.1;dbname=baseextracao',
+			'connectionString' => 'mysql:host=192.168.1.101;dbname=baseextracao',
+		    //'connectionString' => 'mysql:host=127.0.0.1;dbname=baseextracao',
 			'emulatePrepare' => true,
 			'username' => 'root',
 			'password' => '',

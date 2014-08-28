@@ -6,12 +6,12 @@ class UsuarioIdentity extends CUserIdentity
 	
 	public function authenticate()
 	{
-		$record = Usuario::model()->findByAttributes(array('login'=>$this->username));
+		$record = User::model()->findByAttributes(array('username'=>$this->username));
 		if($record===null)
 		{
 			$this->errorCode=self::ERROR_USERNAME_INVALID;
 			$this->errorMessage = "Login Inválido";
-		}elseif($record->senha !== $this->password)
+		}elseif($record->password !== md5($this->password))
 		{
 			$this->errorMessage = "Senha Inválida";
 			$this->errorCode=self::ERROR_PASSWORD_INVALID;

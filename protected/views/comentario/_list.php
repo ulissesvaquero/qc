@@ -22,7 +22,7 @@
 <?php endforeach;?>
 
 <?php
-	if($qtdComentario > 5 && !$insert && $qtdArr == $dataProvider->criteria->limit)
+	if($qtdComentario > 5 && !isset($insert) && $qtdArr == $dataProvider->criteria->limit)
 	{
 		echo CHtml::ajaxButton('carregar mais comentários',
 								Yii::app()->createUrl('comentario/getcomentario'),

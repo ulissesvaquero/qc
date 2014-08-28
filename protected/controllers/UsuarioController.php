@@ -1,5 +1,5 @@
 <?php
-class UsuarioController extends Controller {
+class UsuarioController extends RController {
 	
 	
 	/**
@@ -20,17 +20,20 @@ class UsuarioController extends Controller {
 		$usuario = new Usuario();
 		if(isset($_POST["Usuario"]["login"]))
 		{
-			$identity = new UsuarioIdentity($_POST["Usuario"]["login"], $_POST["Usuario"]["senha"]);
-			if($identity->authenticate())
+			$model = new UserLogin;
+			$model->username = $_POST["Usuario"]["login"];
+			$model->password = $_POST["Usuario"]["senha"];
+			if($model->validate())
 			{
-				Yii::app()->user->login($identity);
+				//Yii::app()->user->login($model);
+				$this->lastViset();
 				$this->redirect(array('pergunta/index'));
 			}
 			else
 			{
 				$this->user->setFlash(
 						'error',
-						"<strong>$identity->errorMessage</strong> "
+						"<strong>Ocorreu um erro</strong> "
 				);
 				$this->redirect ( array (
 						'login'
@@ -42,8 +45,16 @@ class UsuarioController extends Controller {
 	
 	public function actionLogout()
 	{
-		Yii::app()->user->logout(true);
-		$this->redirect(array('login'));
+		Yii::app()->user->logout();
+		$this->redirect(array('site/index'));
+	}
+	
+	
+	private function lastViset() 
+	{
+		$lastVisit = User::model()->notsafe()->findByPk(Yii::app()->user->id);
+		$lastVisit->lastvisit = time();
+		$lastVisit->save();
 	}
 	
 	/**
