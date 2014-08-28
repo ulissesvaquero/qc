@@ -50,19 +50,9 @@
 								array("class" => "btn btn-success btn-lg")); 
 	?>
 	
-	<?php 
-		 echo CHtml::ajaxButton('Comentarios',
-								Yii::app()->createUrl('comentario/getform'),
-								array("update" => '#comentario'.$data->id ,
-									  "data" => array("idPergunta" => $data->id)),
-								array("class" => "btn btn-default bt-sm")); 
-	?>
 
 
 <?php $this->endWidget(); ?>
 <div id="correcao<?php echo $data->id;?>" style="padding-top: 10px"></div>
-<div id="comentario<?php echo $data->id;?>" style="padding: 10px ; display:block;">
-<?php $this->renderPartial('/comentario/_form',array('id' => $data->id));?>
-</div>
 
 

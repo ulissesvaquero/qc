@@ -19,18 +19,27 @@ class ComentarioController extends Controller
 	
 	public function actionCadastrarcomentario()
 	{
-		echo "<div class=\"popover right\" style=\"display:block\">
-        <div class=\"arrow\"></div>
-        <h3 class=\"popover-title\">Popover right</h3>
- 
-        <div class=\"popover-content\">
-            <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam.
-                Pellentesque ornare sem lacinia quam
-                venenatis vestibulum.</p>
-        	</div>
-    		</div>";
+		parse_str($_GET['formData'], $formData);
+		if(empty($formData['Comentario']['comentario']))
+		{
+			echo "<div class=\"alert in fade alert-danger\" style=\"margin-top:20px\">
+			<a href=\"#\" class=\"close\" data-dismiss=\"alert\">AAARGHH!!</a>
+			<strong>Erro!</strong> Digite um comentário
+			</div>";
+		}else 
+		{
+			$comentario = new Comentario();
+			$comentario->comentario = $formData['Comentario']['comentario'];
+			$comentario->id_pergunta = $_GET['idPergunta'];
+			$comentario->id_usuario = Yii::app()->user->getId();
+			$comentario->save();
+			$dataProvider=new CActiveDataProvider('Comentario');
+			$dataProvider->criteria->limit = 2;
+			//$dataProvider->pagination->pageSize = 5;
+			echo $this->render('/comentario/index',array('dataProvider'=>$dataProvider),true);
+		}
 		
-		//echo "<p><b>teste</b></p>";
+		
 	}
 
 	// Uncomment the following methods and override them if needed

@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Example of Twitter Bootstrap 3 Affix</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="language" content="en" />
+
+<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 
 <style type="text/css">
     /* Custom Styles */
@@ -43,7 +47,33 @@
 </head>
 <body data-spy="scroll" data-target="#myScrollspy">
 <div class="container">
-    <?php echo $content; ?>
+	<!-- Alertas -->
+	<div id="alertas">
+		<?php 
+			$this->widget('booster.widgets.TbAlert', array(
+					'fade' => true,
+					'closeText' => '&times;', // false equals no close link
+					'events' => array(),
+					'htmlOptions' => array(),
+					'userComponentId' => 'user',
+					'alerts' => array( // configurations per alert type
+							// success, info, warning, error or danger
+							'success' => array('closeText' => '&times;'),
+							'info', // you don't need to specify full config
+							'warning' => array('closeText' => false),
+							'error' => array('closeText' => 'AAARGHH!!')
+					),
+			));
+		?>
+	</div>
+	
+	<!-- Conteudo -->
+	<div id="conteudo">
+		<?php echo $content; ?>
+	</div>
+	
+    
 </div>
 </body>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/geral.js"></script>
 </html>                                		

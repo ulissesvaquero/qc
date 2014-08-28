@@ -3,7 +3,7 @@ $comentario = new Comentario();
 $formComentario = $this->beginWidget(
 		'booster.widgets.TbActiveForm',
 		array(
-				'id' => 'comentario'.$id,
+				'id' => 'formComentario'.$data->id,
 		)
 );
 ?>
@@ -18,18 +18,22 @@ $formComentario = $this->beginWidget(
 						'height' => '100px',
 						'options' => array('color' => true),
 					),
-					'htmlOptions' => array('id' => 'formComentario'.$id),
+					'htmlOptions' => array('id' => 'conteudo'.$data->id),
 					'lang' => 'pt-BR',
 					'height' => '100px'
 				 )
 			)
 ); ?>
+
+<?php echo $formComentario->hiddenField($data, 'id'); ?>
+
 <?php 
  echo CHtml::ajaxButton('Postar Comentário',
 								Yii::app()->createUrl('comentario/cadastrarcomentario'),
-								array("success" => 'js:function(retorno){$(\'#comentario'.$id.'\').append(retorno);}',
+								array("success" => 'js:function(retorno){$(\'#comentario'.$data->id.'\').html(retorno); $(\'#formComentario'.$data->id.'\').get(0).reset();botaoComentario($(\'#formComentario'.$data->id.'\'));}',
+									  //'beforeSend' => '$(this).addClass(\'disabled\')',
 								//array("update" => '#comentario'.$id,
-									  "data" => array("idPergunta" => $id)),
-								array("class" => "btn btn-default bt-sm"));
+									  "data" => array("idPergunta" => $data->id,'formData' => 'js:$(\'#formComentario'.$data->id.'\').serialize()')),
+								array("class" => "btn btn-info btn-sm pull-right clearfix",'onclick' => 'botaoComentario($(\'#formComentario'.$data->id.'\'))'));
 ?>
 <?php $this->endWidget();?>

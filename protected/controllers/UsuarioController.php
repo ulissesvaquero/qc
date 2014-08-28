@@ -42,14 +42,8 @@ class UsuarioController extends Controller {
 	
 	public function actionLogout()
 	{
-		if(Yii::app()->user->logout())
-		{
-			$this->user->setFlash(
-					'error',
-					"<strong>Volte Sempre!</strong> LogOff efetuado com sucesso"
-			);
-			$this->redirect(array('login'));
-		}
+		Yii::app()->user->logout(true);
+		$this->redirect(array('login'));
 	}
 	
 	/**
